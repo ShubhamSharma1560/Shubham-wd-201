@@ -46,7 +46,7 @@ def parse_dns(dns_raw)
 
     inner_dns = {}
 
-    inner_dns[:type] = dns.split(', ', -1)[0] # hash type store 1st element of dns or 0 indexed element
+    inner_dns[:type] = dns.split(', ')[0] # hash type store 1st element of dns or 0 indexed element
 
     inner_dns[:destination] = dns.split[2] # hash destination store dns 3rd value
 
