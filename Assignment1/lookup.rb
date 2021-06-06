@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def get_command_line_argument
   # ARGV is an array that Ruby defines for us,
 
@@ -39,21 +41,21 @@ dns_raw = File.readlines('zone')
 def parse_dns(dns_raw)
   dns_records = {}
 
-  dns_raw.each do |dns|
-    dns = dns.strip
+  dns_raw.each do |dns|  # iterating over array of string of dns_raw
+    dns = dns.strip      # remove trailing whitespaces from both sides of string
 
-    next unless !dns.start_with?('#') || (dns.length != 0)
+    next unless !dns.start_with?('#') && (dns.length != 0) # execute unless string length empty or a comment
 
-    nested_dns = {}
+    inner_dns = {}
 
-    nested_dns[:type] = dns.split(', ', -1)[0]
+    inner_dns[:type] = dns.split(', ', -1)[0] # hash type store 1st element of dns or 0 indexed element
 
-    nested_dns[:destination] = dns.split[2]
+    inner_dns[:destination] = dns.split[2] # hash destination store dns 3rd value
 
-    dns_records[dns.split(', ', -1)[1]] = nested_dns
+    dns_records[dns.split(', ')[1]] = inner_dns # hash key will be dns source
   end
 
-  dns_records
+  dns_records # by default last statement act as return statement
 end
 
 def resolve(dns_records, lookup_chain, domain)
@@ -61,7 +63,7 @@ def resolve(dns_records, lookup_chain, domain)
 
   if !record
 
-    lookup_chain = ['Error: Record not found for ' + domain]
+    lookup_chain = ["Error: record not found for #{domain}"]
 
   elsif record[:type] == 'CNAME'
 
@@ -74,6 +76,7 @@ def resolve(dns_records, lookup_chain, domain)
     lookup_chain.push(record[:destination])
 
   end
+  lookup_chain
 end
 
 # ..
