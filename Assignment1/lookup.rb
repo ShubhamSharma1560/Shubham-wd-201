@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def get_command_line_argument
   # ARGV is an array that Ruby defines for us,
 
@@ -76,6 +74,7 @@ def resolve(dns_records, lookup_chain, domain)
     lookup_chain.push(record[:destination])
 
   end
+
   lookup_chain
 end
 
