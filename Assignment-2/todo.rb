@@ -1,16 +1,12 @@
 require "date"
 
 class Todo
-  # ..
-  # ..
   def initialize(text, due_date, completed)
     @text = text
     @due_date = due_date
     @completed = completed
   end
 
-  # ..
-  # ..
   def due_date
     @due_date
   end
@@ -31,8 +27,6 @@ class TodosList
     TodosList.new(@todos.filter { |todo| todo.due_date < Date.today })
   end
 
-  # ..
-  # ..
   def add(obj)
     @todos.push(obj)
   end
@@ -44,9 +38,6 @@ class TodosList
   def due_later
     TodosList.new(@todos.filter { |todo| todo.due_date > Date.today })
   end
-
-  # ..
-  # ..
 
   def to_displayable_list
     @todos.map { |todo| todo.to_displayable_string }
