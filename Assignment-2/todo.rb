@@ -1,10 +1,6 @@
 require "date"
 
 class Todo
-<<<<<<< HEAD
-=======
-
->>>>>>> 91ffbff33a90ee0e446fd57c99047b5c873908b5
   def initialize(text, due_date, completed)
     @text = text
     @due_date = due_date
