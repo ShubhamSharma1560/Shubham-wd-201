@@ -27,7 +27,7 @@ class Todo < ActiveRecord::Base
     puts overdue.map { |todo| todo.to_displayable_string }
     puts "\nDue Today\n"
     puts due_today.map { |todo| todo.to_displayable_string }
-    puts "\nDur Later\n"
+    puts "\nDue Later\n"
     puts due_later.map { |todo| todo.to_displayable_string }
   end
 
