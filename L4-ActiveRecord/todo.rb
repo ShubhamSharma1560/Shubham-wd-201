@@ -36,9 +36,9 @@ class Todo < ActiveRecord::Base
   end
 
   def self.mark_as_complete(id)
-    to_mark = Todo.find(id)
-    to_mark.completed = true
-    to_mark.save
-    to_mark
+    complete_todo = Todo.find(id)
+    complete_todo.completed = true
+    complete_todo.save
+    complete_todo
   end
 end
